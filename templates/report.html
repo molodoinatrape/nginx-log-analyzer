@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nginx Log Analyzer - отчёт</title>
+  <style>
+    body { margin: 32px auto; padding: 0 20px; max-width: 1400px; font: 15px/1.5 system-ui, sans-serif; color: #203039; background: #f5f7f6; }
+    h1 { font-size: 26px; margin-bottom: 8px; } p { color: #526570; }
+    .table-scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; background: white; font-variant-numeric: tabular-nums; }
+    th, td { padding: 12px; border-bottom: 1px solid #d6dfe3; text-align: right; white-space: nowrap; }
+    th:first-child, td:first-child { text-align: left; }
+    td:first-child { min-width: 260px; max-width: 500px; overflow-wrap: anywhere; white-space: normal; }
+    th { background: #e5efeb; }
+    button { color: #205e53; font: inherit; font-weight: 700; border: 0; background: none; cursor: pointer; }
+    button:focus-visible { outline: 2px solid #205e53; outline-offset: 3px; }
+    caption { text-align: left; padding: 12px 0; }
+  </style>
+  <script id="report-data" type="application/json">$table_json</script>
+  <script src="report.js" defer></script>
+</head>
+<body>
+  <h1>Nginx Log Analyzer</h1>
+  <p>URL отсортированы по суммарному времени. Нажмите заголовок столбца для сортировки.</p>
+  <div class="table-scroll">
+    <table id="report-table">
+      <caption>Время - в секундах. Доли - в процентах. Источник: выбранный файл nginx-лога.</caption>
+      <thead><tr id="report-head"></tr></thead>
+      <tbody id="report-body"></tbody>
+    </table>
+  </div>
+  <noscript>Для отображения таблицы включите JavaScript. Отчёт не использует сеть.</noscript>
+</body>
+</html>
