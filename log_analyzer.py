@@ -1,6 +1,7 @@
 import argparse
 import gzip
 import json
+import math
 import re
 import shutil
 from collections.abc import Generator, Iterable
@@ -87,7 +88,7 @@ def parse_line(line: str) -> tuple[str, float] | None:
     except IndexError, ValueError:
         return None
 
-    if request_time < 0.0:
+    if not math.isfinite(request_time) or request_time < 0.0:
         return None
 
     log = url, request_time

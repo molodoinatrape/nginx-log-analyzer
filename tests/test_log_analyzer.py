@@ -46,6 +46,15 @@ def test_parse_line_empty() -> None:
     assert result is None
 
 
+@pytest.mark.parametrize("value", ["nan", "NaN", "inf", "Infinity", "-inf", "1e999"])
+def test_parse_line_rejects_nonfinite_times(value: str) -> None:
+    line = (
+        f'192.0.2.1 - - [01/Jan/2030:00:00:00 +0000] "GET /demo HTTP/1.1" 200 1 {value}'
+    )
+
+    assert parse_line(line) is None
+
+
 def test_parse_line_broken() -> None:
     result = parse_line("broken line")
 
