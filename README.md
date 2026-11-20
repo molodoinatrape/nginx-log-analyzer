@@ -1,5 +1,7 @@
 # Nginx Log Analyzer
 
+[![Checks](https://github.com/molodoinatrape/nginx-log-analyzer/actions/workflows/checks.yml/badge.svg)](https://github.com/molodoinatrape/nginx-log-analyzer/actions/workflows/checks.yml)
+
 CLI-инструмент для анализа nginx access-логов. Находит последний лог по дате в
 имени, группирует запросы по URL и создаёт автономный HTML-отчёт: число запросов,
 доли, суммарное, среднее, максимальное и медианное время ответа.
@@ -8,7 +10,7 @@ CLI-инструмент для анализа nginx access-логов. Нахо
 «Python-разработчик. Продвинутый уровень». Исходное решение доступно в
 [учебном репозитории](https://github.com/molodoinatrape/OTUS-Pro/tree/main/homeworks/01_log_analyzer).
 В этой версии добавлены самостоятельное оформление, синтетический пример и отчёт
-без внешних библиотек JavaScript. Учебное происхождение не означает коммерческий опыт.
+без внешних библиотек JavaScript.
 
 ![Автономный HTML-отчёт](docs/images/report.png)
 
@@ -17,6 +19,8 @@ CLI-инструмент для анализа nginx access-логов. Нахо
 Нужны Python 3.14 и uv. Из корня проекта:
 
 ```bash
+git clone https://github.com/molodoinatrape/nginx-log-analyzer.git
+cd nginx-log-analyzer
 uv sync --locked
 uv run log-analyzer --config config.logging.json
 ```
@@ -45,9 +49,11 @@ uv run pytest -q
 
 Дополнительно: `make coverage` выводит покрытие. Точные версии зависимостей
 закреплены в `uv.lock`. Workflow `.github/workflows/checks.yml` выполняет эти
-проверки из корня отдельного проекта; на GitHub новая версия пока не запускалась.
+проверки из корня отдельного проекта. Результаты доступны в
+[GitHub Actions](https://github.com/molodoinatrape/nginx-log-analyzer/actions).
 
-Локальная проверка 2026-11-05: 33 теста, isort, Black, Flake8 и mypy прошли.
+Проверка 2026-11-20 в WSL: 33 теста, isort, Black, Flake8 и mypy прошли,
+wheel и sdist собраны.
 Собраны wheel и sdist; wheel установлен в отдельное окружение и запущен вне
 исходной папки. Сортировка HTML-отчёта проверена в Chromium без доступа к сети.
 
